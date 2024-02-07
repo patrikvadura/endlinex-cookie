@@ -1,0 +1,30 @@
+{
+  "name": "endlinex-cookie",
+  "description": "Spolehlivé a optimalizované řešení cookie consent pro váš WordPress.",
+  "author": "Patrik Vaďura | www.patrikvadura.cz",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "gulp",
+    "dev": "gulp watch"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^9.1.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-terser": "^2.1.0",
+    "gulp-watch-sass": "^1.4.1",
+    "postcss": "^8.4.33",
+    "postcss-import": "^16.0.0",
+    "postcss-nesting": "^12.0.2",
+    "sass": "^1.62.1",
+    "tailwindcss": "^3.4.1"
+  }
+}
