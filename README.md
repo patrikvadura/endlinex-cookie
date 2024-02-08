@@ -12,16 +12,17 @@ Spolehlivé a optimalizované řešení cookie consent pro váš WordPress.
 
 ```
 # Install depandencies
-
 $ npm install
 
 # Local development
-
 $ npm run dev
 
 # Build production
-
 $ npm run build
+
+# Docker
+$ docker-compose up -d
+$ docker-compose down
 ```
 
 ### Recommended

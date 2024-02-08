@@ -37,7 +37,7 @@ function scripts() {
 function watch() {
   gulp.watch('src/sass/**/*.scss', gulp.series(styles));
   gulp.watch('src/js/*.js', gulp.series(scripts));
-  gulp.watch('**/*.{php,js}', gulp.series(styles));
+  gulp.watch('src/*.php', gulp.series(styles));
 }
 
 export default gulp.series(gulp.parallel(scripts, styles), watch);

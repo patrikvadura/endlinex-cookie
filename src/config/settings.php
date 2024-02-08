@@ -2,6 +2,15 @@
 
 namespace endlineX;
 
+$cookiePageClient = array(
+    'name' => 'Jméno / Firma',
+    'ico' => 'IČO (jedná-li se o firmu)',
+    'address' => 'Adresa',
+    'website' => 'Webové stránky',
+    'email' => 'E-mail',
+    'dateStart' => 'Datum zahájení',
+);
+
 function endlineX_custom_admin_header() {
     echo '
     <div style="box-shadow:-20px 0 0 #242E34; width: 100%; height: 17rem; display: flex; align-items: center; position: relative; overflow: hidden;">
@@ -50,6 +59,8 @@ add_action('admin_menu', __NAMESPACE__ . '\endlinex_add_admin_menu');
 
 function endlinex_settings_init() {
 
+    global $cookiePageClient;
+
     // register Google Tag Manager Id field
     register_setting('endlinex', 'endlinex_gtm_id', array(
         'type' => 'string',
@@ -82,16 +93,6 @@ function endlinex_settings_init() {
         'endlinex'
     );
 
-    // register fields for each value in $cookiePageClient
-    $cookiePageClient = array(
-        'name' => 'Jméno / Firma',
-        'ico' => 'IČO (jedná-li se o firmu)',
-        'address' => 'Adresa',
-        'website' => 'Webové stránky',
-        'email' => 'E-mail',
-        'dateStart' => 'Datum zahájení',
-    );
-
     foreach($cookiePageClient as $field => $label) {
         // get the default values for specific fields
         $default = NULL;
@@ -115,6 +116,8 @@ function endlinex_settings_init() {
             array('label_for' => 'endlinex_' . $field) // Pass the field ID as an arg
         );
     }
+
+    add_action('updated_option', __NAMESPACE__ . '\update_endlinex_cookie_page', 10, 3);
 }
 
 function endlinex_gtm_field_html() {

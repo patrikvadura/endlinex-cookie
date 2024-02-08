@@ -1,17 +1,8 @@
 <?php
 
-$cookiePageClient = array(
-    'name' => 'Patrik Vaďura',
-    'ico' => '08552703',
-    'address' => 'Nedakonice 221, 687 38 Nedakonice',
-    'website' => '',
-    'email' => 'info@patrikvadura.cz',
-    'dateStart' => '1. 1. 2023',
-);
-
 // Block - Description
 echo '<!-- wp:paragraph -->';
-echo '<p>Naše společnost ' . $cookiePageClient['name'] . ', se sídlem na adrese ' . $cookiePageClient['address'] . ', IČO ' . $cookiePageClient['ico'] .' (dále jen "my"), využívá soubory cookie pro zajištění hladkého fungování a zlepšení našich internetových stránek. Cílem tohoto dokumentu, nazvaného "Zásady používání souborů cookie" (dále jen "zásady"), je poskytnout vám informace o tom, jak s těmito soubory nakládáme, včetně zpracování osobních údajů, a seznámit vás s vašimi právy podle zákona o elektronických komunikacích č. 127/2005 Sb. a nařízení GDPR č. 2016/679. Jako uživatel našeho webu jste povinni se seznámit s těmito zásadami. V případě nejasností nebo dotazů nás kontaktujte na e-mailu: ' . $cookiePageClient['email'] . '</p>';
+echo '<p>Naše společnost ' . esc_html(get_option('endlinex_name')) . ', se sídlem na adrese ' . esc_html(get_option('endlinex_address')) . ', IČO ' . esc_html(get_option('endlinex_ico')) .' (dále jen "my"), využívá soubory cookie pro zajištění hladkého fungování a zlepšení našich internetových stránek. Cílem tohoto dokumentu, nazvaného "Zásady používání souborů cookie" (dále jen "zásady"), je poskytnout vám informace o tom, jak s těmito soubory nakládáme, včetně zpracování osobních údajů, a seznámit vás s vašimi právy podle zákona o elektronických komunikacích č. 127/2005 Sb. a nařízení GDPR č. 2016/679. Jako uživatel našeho webu jste povinni se seznámit s těmito zásadami. V případě nejasností nebo dotazů nás kontaktujte na e-mailu: ' . esc_html(get_option('endlinex_email')) . '</p>';
 echo '<!-- /wp:paragraph -->';
 
 // Block - About Cookie
@@ -59,5 +50,5 @@ echo '<!-- wp:heading -->';
 echo '<h2>Aktualizace těchto zásad</h2>';
 echo '<!-- /wp:heading -->';
 echo '<!-- wp:paragraph -->';
-echo '<p>Tyto zásady nabývají účinnosti od ' . $cookiePageClient['dateStart'] .'. V případě potřeby si vyhrazujeme právo na jejich aktualizaci. Doporučujeme vám pravidelně kontrolovat nejnovější verzi těchto zásad na našem webu. Jakékoli změny vstupují v platnost okamžitě po zveřejnění.</p>';
+echo '<p>Tyto zásady nabývají účinnosti od ' . esc_html(get_option('endlinex_dateStart')) .'. V případě potřeby si vyhrazujeme právo na jejich aktualizaci. Doporučujeme vám pravidelně kontrolovat nejnovější verzi těchto zásad na našem webu. Jakékoli změny vstupují v platnost okamžitě po zveřejnění.</p>';
 echo '<!-- /wp:paragraph -->';

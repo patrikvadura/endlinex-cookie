@@ -2,37 +2,40 @@ function checkCookie() {
     return document.cookie.split('; ').includes('cookieConsent=true');
 }
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function (){
     let cookieModal = document.getElementById('cookieModal');
     let cookieDialog = document.getElementById('cookieDialog');
-    let settingsModal = document.getElementById('settingsDialog');
+    let settingsDialog = document.getElementById('settingsDialog');
     let settingsBtn = document.getElementById('settingsBtn');
 
     let settingsOpen = false;
 
+    // Hide settings dialog initially
+    settingsDialog.style.display = 'none';
+
     if (!checkCookie()) {
-        cookieModal.classList.remove('hidden');
-        cookieDialog.classList.remove('hidden');
+        cookieModal.style.display = 'block';
+        cookieDialog.style.display = 'block';
     }
 
-    document.getElementById('acceptBtn').addEventListener('click', function() {
+    document.getElementById('acceptBtn').addEventListener('click', function () {
         let date = new Date();
         date.setFullYear(date.getFullYear() + 1);
         document.cookie = `cookieConsent=true; expires=${date.toUTCString()}; path=/`;
-        cookieModal.classList.add('hidden');
-        cookieDialog.classList.add('hidden');
+        cookieModal.style.display = 'none';
+        cookieDialog.style.display = 'none';
+        settingsDialog.style.display = 'none';
     });
 
-    document.getElementById('denyBtn').addEventListener('click', function() {
+    document.getElementById('denyBtn').addEventListener('click', function () {
         document.cookie = 'cookieConsent=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        cookieModal.classList.add('hidden');
-        cookieDialog.classList.add('hidden');
+        cookieModal.style.display = 'none';
+        cookieDialog.style.display = 'none';
     });
 
-    settingsBtn.addEventListener('click', function() {
-        settingsOpen ? settingsModal.classList.add('hidden') : settingsModal.classList.remove('hidden'); // Zobrazi se nastaveni nebo ho skryje
-        settingsBtn.innerText = settingsOpen ? 'Nastavení' : 'Uložit';
+    settingsBtn.addEventListener('click', function () {
         settingsOpen = !settingsOpen;
+        settingsDialog.style.display = settingsOpen ? 'block' : 'none';
+        settingsBtn.innerText = settingsOpen ? 'Uložit' : 'Nastavení';
     });
-
 });

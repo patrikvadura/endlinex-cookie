@@ -9,15 +9,24 @@
 // EndlineX configuration
 .endlinex {
   &-cookie {
-    @apply fixed flex flex-col-reverse bg-white rounded-lg px-8 pt-10 pb-6 text-white bottom-8 left-1/2 -translate-x-1/2;
+    @apply max-h-[90%] fixed flex flex-col bg-white rounded-lg px-8 pt-10 pb-6 text-white bottom-8 left-1/2 -translate-x-1/2;
 
+    overflow: scroll;
     z-index: 998;
 
+    @screen md {
+      overflow: auto;
+    }
+
     &-dialog {
-      @apply flex flex-col items-center space-y-4 text-center text-default text-p transition-all duration-300 ease-in-out;
+      @apply flex flex-col items-center space-y-4 text-center text-default text-p;
 
       .title {
         @apply text-title font-bold;
+      }
+
+      .show-more {
+        @apply block underline;
       }
 
       .footer {
