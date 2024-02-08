@@ -54,6 +54,8 @@ echo '
             <div class="title">'.$dialogSettingsTitle.'</div>    
             <p>'.$dialogSettingsDescription.'</p>
             
+            <a href="/cookie" class="underline">' . __("Více o cookie", 'endlineX') . '</a>
+            
             <div class="space-y-0 w-full">';
 
             foreach ($dialogSettingsCategories as $category) {

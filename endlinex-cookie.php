@@ -40,5 +40,39 @@ function endlinex_cookie()
 
 add_action('wp_footer', __NAMESPACE__ . '\endlinex_cookie');
 
-// Smazat
-include(plugin_dir_path(__FILE__) . 'src/endlinex-page.php');
+// Create Cookie page
+\register_activation_hook(__FILE__, __NAMESPACE__ . '\create_endlinex_cookie_page');
+
+function create_endlinex_cookie_page() {
+    $endlinex_page_content = '';
+    $endlinex_page_title = 'Zásady používání souborů cookie';
+
+    $endlinex_page_file_path = \plugin_dir_path(__FILE__) . 'src/endlinex-page.php';
+    if(\file_exists($endlinex_page_file_path)) {
+        ob_start();
+        include($endlinex_page_file_path);
+        $endlinex_page_content = ob_get_clean();
+    } else {
+        return;
+    }
+
+    $args = array(
+        'post_type' => 'page',
+        'post_status' => 'publish',
+        's' => $endlinex_page_title,
+    );
+    $page_exists_query = new \WP_Query($args);
+    $existing_page = $page_exists_query->have_posts();
+
+    if(!$existing_page) {
+        $page_id = \wp_insert_post(
+            array(
+                'post_title'     => $endlinex_page_title,
+                'post_type'      => 'page',
+                'post_status'    => 'publish',
+                'post_name'      => 'cookie',
+                'post_content'   => $endlinex_page_content,
+            )
+        );
+    }
+}
